@@ -5,7 +5,6 @@ const Doctor = require("../models/doctorModel");
 
 const router = express.Router();
 
-// @desc Get all appointments
 router.get("/", async (req, res) => {
   try {
     const appointments = await Appointment.find().populate("doctorId", "name");
@@ -15,7 +14,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// @desc Create an appointment
 router.post("/", async (req, res) => {
   try {
     const { doctorId, date, duration, appointmentType, patientName, notes } =
@@ -50,8 +48,6 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
-
-// @desc Delete an appointment
 router.delete("/:id", async (req, res) => {
   try {
     const appointment = await Appointment.findById(req.params.id);
@@ -83,7 +79,7 @@ router.put("/:id", async (req, res) => {
     const existingAppointments = await Appointment.find({
       doctorId,
       date: { $gte: appointmentStart.toDate(), $lt: appointmentEnd.toDate() },
-      _id: { $ne: req.params.id }, // Exclude the current appointment
+      _id: { $ne: req.params.id },
     });
 
     if (existingAppointments.length > 0) {
