@@ -14,7 +14,7 @@ export const AllRoutes = () => {
         <div>
             <Navbar />
             <Routes>
-                <Route path="/" element={<h2>Welcome to the Doctor Management System</h2>} />
+            <Route path="/" element={<DoctorsList />} />
                 <Route path="/add-doctor" element={<DoctorAdd />} />
                 <Route path="/appointments" element={<AppointmentsList />} />
                 <Route path="/book-appointment/:doctorId" element={<AppointmentForm />} />

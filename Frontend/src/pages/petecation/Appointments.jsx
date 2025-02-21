@@ -20,7 +20,7 @@ const Appointments = () => {
 
     const fetchAppointments = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/appointments");
+            const response = await axios.get("https://babyback.onrender.com/appointments");
             setAppointments(response.data);
         } catch (error) {
             console.error("Error fetching appointments:", error);
@@ -35,9 +35,9 @@ const Appointments = () => {
         e.preventDefault();
         try {
             if (editingId) {
-                await axios.put(`http://localhost:5000/appointments/${editingId}`, formData);
+                await axios.put(`https://babyback.onrender.com/appointments/${editingId}`, formData);
             } else {
-                await axios.post("http://localhost:5000/appointments", formData);
+                await axios.post("https://babyback.onrender.com/appointments", formData);
             }
             setFormData({
                 patientName: "",
@@ -56,7 +56,7 @@ const Appointments = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/appointments/${id}`);
+            await axios.delete(`https://babyback.onrender.com/appointments/${id}`);
             fetchAppointments();
         } catch (error) {
             console.error("Error deleting appointment:", error);

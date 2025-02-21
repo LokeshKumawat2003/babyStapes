@@ -32,7 +32,7 @@ export const DoctorAdd = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/doctors', {
+            const response = await fetch('https://babyback.onrender.com/doctors', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(doctorData),

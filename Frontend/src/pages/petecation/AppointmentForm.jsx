@@ -19,7 +19,7 @@ export const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('http://localhost:5000/doctors');
+        const response = await fetch('https://babyback.onrender.com/doctors');
         if (response.ok) {
           const data = await response.json();
           setDoctors(data);
@@ -41,7 +41,7 @@ export const AppointmentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/appointments', {
+      const response = await fetch('https://babyback.onrender.com/appointments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(appointment),
